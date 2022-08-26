@@ -14,7 +14,7 @@
  重启防火墙
  firewall-cmd --reload
  
- 永久添加端口
+ 永久添加端口 完成后记得重启防火墙
  firewall-cmd --zone=public --add-port=80/tcp --permanent
  
  查看开放的端口
@@ -44,3 +44,51 @@ git branch -M main
 git remote add origin git@github.com:whutan/StudyNotes.git
 git push -u origin main
 ```
+## 安装httpd服务
+
+````php+HTML
+安装apache
+yum -y install httpd
+
+
+查看apache运行状态
+systemctl status httpd
+
+开启apache
+systemctl start httpd
+
+设置开机启动
+
+````
+
+## 安装mariadb
+
+~~~~
+安装mariadb
+yum install mariadb-server
+
+启动命令
+systemctl start mariadb
+
+重启命令
+systemctl restart mariadb
+
+关闭命令
+systemctl stop mariadb
+
+开机自启
+systemctl enable mariadb
+
+关闭自启
+systemctl disable mariadb
+
+初始化数据库
+mysql_secure_installation
+初始化数据库提示输入root用户密码，初次进入，密码为空，直接回车就可以了
+
+实现远程访问的两个条件
+1 执行命令
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '你的root密码' WITH GRANT OPTION;
+2  设置防火墙放开3306端口
+~~~~
+
