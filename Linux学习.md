@@ -132,3 +132,33 @@ php -m
   yum -y install php php-mcrypt php-devel php-cli php-gd php-pear php-curl php-fpm php-mysql php-ldap php-zip php-fileinfo 
 ````
 
+## 安装laravel框架
+
+````php+HTML
+  1  安装composer
+curl -k -sS https://getcomposer.org/installer | php
+
+  2 移动composer.phar
+  mv composer.phar /usr/local/bin/composer
+  
+  3 更改composer国内镜像
+  composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
+  
+  4 通过composer安装 #--prefer-dist 的作用是强制下载压缩包
+  composer create-project --prefer-dist laravel/laravel 项目名称 "8.*"
+  
+  5  配置虚拟机 在/etc/httpd/conf.d目录下创建vhosts.conf文件，在文件中添加以下内容
+	<VirtualHost 192.168.1.112:80>
+        DocumentRoot "/var/www/html/blog/public"
+        ServerName blog_laravel.com
+        ErrorLog "/var/log/httpd/blog-error_log"
+        <Directory "/var/www/html/blog/public/">
+        DirectoryIndex index.html index.php
+        Options FollowSymLinks
+        AllowOverride All
+        Require all granted
+        </Directory>
+     </VirtualHost>
+	
+````
+
