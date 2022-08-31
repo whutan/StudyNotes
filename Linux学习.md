@@ -1,4 +1,4 @@
-#  Linux学习修改
+#  Linux学习
 
 
 
@@ -92,6 +92,7 @@ GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '你的root密码' WITH 
 2  设置防火墙放开3306端口
 ~~~~
 
+<<<<<<< HEAD
 ## 修改centos7 yum源为阿里源
 
 ````
@@ -108,5 +109,75 @@ yum clean all
 
 ````
 通过本镜像使用wget命令下载 http://175.6.32.4:88/php/php-版本号.tar.bz2 源码文件到lnmp安装包 src 目录下，然后直接进行升级。
+=======
+##  linux网卡配置
+
+````
+ /etc/sysconfig/network-scripts目录下
+ 最后一行等号后面把no改为yes
+ 
+ 2  重启网路服务  
+ service network restart
+````
+
+## linux安装php相关
+
+````
+查看php扩展
+php -m
+
+````
+
+![1661668970284](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1661668970284.png)
+
+````
+ 1  安装必要
+    yum -y install gcc gcc-c++
+    
+ 2	要安装PHP 7，您必须使用以下命令在CentOS 7系统上安装和启用EPEL和Remi存储库
+	yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+	yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+	
+ 3	安装yum-utils，这是一组用于管理yum存储库和包的有用程序。它有基本上扩展yum默认功能的工具。
+ 	yum -y install yum-utils
+
+ 4	yum-utils提供的程序之一是yum-config-manager，您可以使用它来启用Remi存储库作为安装不同PHP版本的默认存储库，如图所示。
+#yum-config-manager --enable remi-php71 [ 安装PHP 7.1 ]
+#yum-config-manager --enable remi-php72 [ 安装PHP 7.2 ]
+#yum-config-manager --enable remi-php73 [ 安装PHP 7.3 ]
+
+  5	使用以下命令安装PHP 7以及所有必需的模块。
+  yum -y install php php-mcrypt php-devel php-cli php-gd php-pear php-curl php-fpm php-mysql php-ldap php-zip php-fileinfo 
+````
+
+## 安装laravel框架
+
+````php+HTML
+  1  安装composer
+curl -k -sS https://getcomposer.org/installer | php
+
+  2 移动composer.phar
+  mv composer.phar /usr/local/bin/composer
+  
+  3 更改composer国内镜像
+  composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
+  
+  4 通过composer安装 #--prefer-dist 的作用是强制下载压缩包
+  composer create-project --prefer-dist laravel/laravel 项目名称 "8.*"
+  
+  5  配置虚拟机 在/etc/httpd/conf.d目录下创建vhosts.conf文件，在文件中添加以下内容
+	<VirtualHost 192.168.1.112:80>
+        DocumentRoot "/var/www/html/blog/public"
+        ServerName blog_laravel.com
+        ErrorLog "/var/log/httpd/blog-error_log"
+        <Directory "/var/www/html/blog/public/">
+        DirectoryIndex index.html index.php
+        Options FollowSymLinks
+        AllowOverride All
+        Require all granted
+        </Directory>
+     </VirtualHost>
+	
+>>>>>>> 7b492ee4b49078e920d903d4bc012c590c890969
 ````
 
