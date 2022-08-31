@@ -92,3 +92,21 @@ GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '你的root密码' WITH 
 2  设置防火墙放开3306端口
 ~~~~
 
+## 修改centos7 yum源为阿里源
+
+````
+1  备份原理的yum源
+cp /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.bak
+
+2 下载阿里云的 yum 源文件并替换本地 yum 源文件
+wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+3 清理缓存
+yum clean all
+````
+
+## php各版本下载地址
+
+````
+通过本镜像使用wget命令下载 http://175.6.32.4:88/php/php-版本号.tar.bz2 源码文件到lnmp安装包 src 目录下，然后直接进行升级。
+````
+
