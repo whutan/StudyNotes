@@ -134,7 +134,7 @@ php -m
 
 ## 安装laravel框架
 
-````php+HTML
+````html
   1  安装composer
 curl -k -sS https://getcomposer.org/installer | php
 
@@ -159,6 +159,23 @@ curl -k -sS https://getcomposer.org/installer | php
         Require all granted
         </Directory>
      </VirtualHost>
+
+ 6	更改laravel项目目录的所有者
+	chown -R apache.apache /var/www/laravel
+	chmod -R 755 /var/www/laravel
 	
+````
+
+# laravel学习
+
+## 数据库索引长度的问题
+
+````php+HTML
+默认情况下，Laravel 使用 utf8mb4 编码。如果你是在版本低于 5.7.7 的 MySQL 或者版本低于 10.2.2 的 MariaDB 上创建索引，那你就需要手动配置数据库迁移的默认字符串长度。 也就是说，你可以通过在 App\Providers\AppServiceProvider 类的 boot 方法中调用 Schema::defaultStringLength 方法来配置默认字符串长度：
+
+public function boot()
+{
+    Schema::defaultStringLength(191);
+}
 ````
 
