@@ -1,0 +1,17 @@
+{
+    "name": "whuta/gitbub",
+    "description": "2023-3-9",
+    "authors": [
+        {
+            "name": "whutan",
+            "email": "whutanlj@163.com"
+        }
+    ],
+
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "App\\": "hyperf/App/"
+        }
+    }
+}
