@@ -8,6 +8,6 @@ class Foo
 {
     public function foo()
     {
-        echo "foo";
+        echo "fooffffff";
     }
 }
