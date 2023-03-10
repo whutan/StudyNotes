@@ -3,7 +3,14 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="a60e64d1-fbc4-4985-96f0-39760b165257" name="centos" url="http://192.168.1.20">
-        <fileTransfer rootFolder="/var/www/html" accessType="SFTP" host="192.168.1.20" port="22" sshConfigId="1e98b998-c85c-4daa-859f-b4055ecd2f4e" sshConfig="root@192.168.1.20:22 password">
+        <fileTransfer rootFolder="/var/www/html" accessType="SFTP" host="192.168.1.109" port="22" sshConfigId="1e98b998-c85c-4daa-859f-b4055ecd2f4e" sshConfig="root@192.168.1.109:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+      <webServer id="58516503-853a-4f3a-aae9-4d74d75666e3" name="composer-study" url="http://192.168.1.109">
+        <fileTransfer accessType="SFTP" host="192.168.1.109" port="22" sshConfigId="1e98b998-c85c-4daa-859f-b4055ecd2f4e" sshConfig="root@192.168.1.109:22 password">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
