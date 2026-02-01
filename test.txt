@@ -1,10 +1,29 @@
 js逆向proxy代理
 
-function setProxyArr(proxyObjarr){
-  for (let i=0;i<proxyObjArr.length;i++){
-    const handler=`{
-    get:function(target,property,receiver){
-    console.log("方法","get","对象","${proxyObjArr[i]}","属性",property,"属性类型:",typeof property,
-    "属性值",target[property],"属性值类型",typeof target[propery]);
-    return target[property];
+function setProxyArr(proxyObjArr) {
+    for (let i = 0; i < proxyObjArr.length; i++) {
+        const handler = `{
+            get:function(target,property,receiver){
+            console.log("方法","get","对象","${proxyObjArr[i]}","属性",property,"属性类型:",typeof property,
+            "属性值",target[property],"属性值类型",typeof target[propery]);
+            return target[property];
+        },
+            set:function(target,property,value,receiver){
+            console.log("方法","set","对象","${proxyObjArr[i]}","属性",property,"属性类型:",typeof property,
+                "属性值",value,"属性值类型",typeof target[propery]);
+                return Reflect.set(...arguments);
+            }
+        }`;
+        eval(`try{
+                ${proxyObjArr[i]};
+                ${proxyObjArr[i]}=new Proxy(${proxyObjArr[i]}, ${handler });
+            }catch (e) {
+            ${proxyObjArr[i] }={ };
+            ${proxyObjArr[i] }=new Proxy(${proxyObjArr[i]}, ${ handler })
+            }
+
+    `)
+  }
+}
+
 
