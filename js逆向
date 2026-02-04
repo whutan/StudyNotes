@@ -26,4 +26,15 @@ function setProxyArr(proxyObjArr) {
   }
 }
 
+//hook钩子函数
+(function(){
+    var parse = JSON.parse;
+    JSON.parse=function(params){
+        if(params.indexOf("result")!=-1){
+            console.log("Hook JSON.parse::::",params)
+            debugger;
+        }
+        return parse(params);
+    }
+})()
 
